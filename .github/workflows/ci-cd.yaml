@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 🛎 Check out code
+      - name: Check out code
       uses: actions/checkout@v2
 
       - name: 🔧 Setup .Net 5
@@ -20,18 +20,16 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
       
-      - name: 😴 Sleep for 1 second
+      - name: Sleep for 1 second
         uses: jakejarvis/wait-action@master
         with:
           time: '1s'
 
-      - name: 🛠 Restore dependencies
+      - name: Restore dependencies
       run: dotnet restore
 
-      - name: 🚀 Build app
+      - name: Build app
       run: dotnet build -c Release --no-restore
 
-      -name: 🧪 Run automated tests
+      -name: Run automated tests
       run: dotnet test -c Release --no-build
-
-
